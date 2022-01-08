@@ -9,7 +9,7 @@ info:
   version: 0.0.1
 
 paths:
-  /music/storage:
+  /music:
     get: {} # gets a paginated list of all the songs
     post: {} # adds a song to the storage
 
