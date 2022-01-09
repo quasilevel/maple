@@ -10,7 +10,46 @@ info:
 
 paths:
   /music:
-    get: {} # gets a paginated list of all the songs
+    get:
+      description: ""
+      summary: returns a paginated list of all the songs
+      parameters:
+        - name: size
+          in: query
+          description: the number of music items to be returned
+          schema:
+            type: integer
+            minimum: 5
+            maximum: 10
+            default: 5
+        - name: start
+          in: query
+          description: the starting offset
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _link:
+                    type: object
+                    properties:
+                      next:
+                        type: string
+                      prev:
+                        type: string
+                  music:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Music"
+        "404":
+          description: there are no items for the given `size` and `start`
     post: {} # adds a song to the storage
 
   /music/{id}:
