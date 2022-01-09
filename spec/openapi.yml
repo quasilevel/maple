@@ -54,8 +54,52 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/NotFound"
-                
-    post: {} # adds a song to the storage
+
+    post:
+      description: ""
+      summary: adds a song to the storage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: "#/components/schemas/MusicData"
+                client:
+                  type: string
+      responses:
+        "200":
+          description: the request was successful BUT the music data was not added
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    enum:
+                      - music data by the given url already exists
+        
+        "201":
+          description: the request was successful and the `id`` for the added music is returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+
+        "400":
+          description: the request is malformed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: music url was not found in the request body
 
   /music/{id}:
     get: {} # gets the info about the song for the given id
