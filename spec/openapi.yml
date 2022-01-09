@@ -11,6 +11,8 @@ info:
 paths:
   /music:
     get:
+      tags:
+        - Searching
       description: ""
       summary: returns a paginated list of all the songs
       parameters:
@@ -56,6 +58,8 @@ paths:
                 $ref: "#/components/schemas/Message"
 
     post:
+      tags:
+        - Maintaining
       description: ""
       summary: adds a song to the storage
       requestBody:
@@ -96,6 +100,8 @@ paths:
 
   /music/{id}:
     get: # gets the info about the song for the given id
+      tags:
+        - Maintaining
       description: ""
       summary: gets the info about the song for the given id
       parameters:
@@ -112,6 +118,8 @@ paths:
           $ref: "#/components/responses/MusicNotFoundJson"
 
     put:
+      tags:
+        - Maintaining
       description: ""
       summary: replaces the music data with the one in request body
       parameters:
@@ -129,6 +137,8 @@ paths:
           $ref: "#/components/responses/MusicNotFoundJson"
 
     delete: # deletes a song by the given id
+      tags:
+        - Maintaining
       description: ""
       summary: deletes a song by the given id
       parameters:
@@ -148,7 +158,9 @@ paths:
                 $ref: "#/components/schemas/Message"
 
   /music/tags:
-    get: 
+    get:
+      tags:
+        - Tagging
       description: ""
       summary: gets a list of all the tags
       responses:
@@ -163,6 +175,9 @@ paths:
 
   /music/{tag}:
     get: # gets all the songs by the given tag
+      tags:
+        - Tagging
+        - Searching
       description: ""
       summary: gets all the music by the given tag
       parameters:
@@ -189,6 +204,8 @@ paths:
 
   /music/search:
     get: # searches through the user's music in a feasibly smart way
+      tags:
+      - Searching
       description: ""
       summary: searches through the user's music in a feasibly smart way
       parameters:
