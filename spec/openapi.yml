@@ -106,3 +106,9 @@ components:
           $ref: "#/components/schemas/MusicData"
         meta:
           $ref: "#/components/schemas/MusicMeta"
+
+    NotFound:
+      type: object
+      properties:
+        message:
+          type: string
