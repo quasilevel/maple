@@ -102,7 +102,31 @@ paths:
                     example: music url was not found in the request body
 
   /music/{id}:
-    get: {} # gets the info about the song for the given id
+    get: # gets the info about the song for the given id
+      description: ""
+      summary: gets the info about the song for the given id
+      parameters:
+        - name: id
+          in: path
+          description: the id of the music for which info is solicited
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: the music was found the music object is returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Music"
+
+        "404":
+          description: the music was not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+
     put: {} # updates the songs by the id
     delete: {} # deletes a song by the given id
 
