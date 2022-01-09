@@ -59,15 +59,8 @@ paths:
       description: ""
       summary: adds a song to the storage
       requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                data:
-                  $ref: "#/components/schemas/MusicData"
-                client:
-                  type: string
+        $ref: "#/components/requestBodies/MusicDataJson"
+        
       responses:
         "200":
           description: the request was successful BUT the music data was not added
@@ -189,3 +182,15 @@ components:
       required: true
       schema:
         type: string
+
+  requestBodies:
+    MusicDataJson:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: "#/components/schemas/MusicData"
+              client:
+                type: string
