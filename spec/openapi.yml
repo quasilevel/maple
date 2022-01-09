@@ -162,7 +162,30 @@ paths:
                   $ref: "#/components/schemas/Tag"
 
   /music/{tag}:
-    get: {} # gets all the songs by the given tag
+    get: # gets all the songs by the given tag
+      description: ""
+      summary: gets all the music by the given tag
+      parameters:
+        - name: tag
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: an array of music objects with the given tag is returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Music"
+        "404":
+          description: there are no music objects that has the given tag
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Message"
 
   /music/search:
     get: {} # searches through the user's music in a feasibly smart way
