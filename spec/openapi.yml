@@ -114,6 +114,8 @@ paths:
     put:
       description: ""
       summary: replaces the music data with the one in request body
+      parameters:
+        - $ref: "#/components/parameters/Id"
       requestBody:
         $ref: "#/components/requestBodies/MusicDataJson"
       responses:
