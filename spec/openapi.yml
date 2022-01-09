@@ -188,7 +188,30 @@ paths:
                 $ref: "#/components/schemas/Message"
 
   /music/search:
-    get: {} # searches through the user's music in a feasibly smart way
+    get: # searches through the user's music in a feasibly smart way
+      description: ""
+      summary: searches through the user's music in a feasibly smart way
+      parameters:
+        - name: q # short for query
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: an array of relevant music objects is returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Music"
+        "404":
+          description: no music was found by the given query
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Message"
 
 components:
   schemas:
