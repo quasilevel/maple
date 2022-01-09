@@ -111,7 +111,21 @@ paths:
         "404":
           $ref: "#/components/responses/MusicNotFoundJson"
 
-    put: {} # updates the songs by the id
+    put:
+      description: ""
+      summary: replaces the music data with the one in request body
+      requestBody:
+        $ref: "#/components/requestBodies/MusicDataJson"
+      responses:
+        "200":
+          description: the music data was successfully replaced, the new music object is returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Music"
+        "404":
+          $ref: "#/components/responses/MusicNotFoundJson"
+
     delete: {} # deletes a song by the given id
 
   /music/tags:
