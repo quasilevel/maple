@@ -126,7 +126,30 @@ paths:
         "404":
           $ref: "#/components/responses/MusicNotFoundJson"
 
-    delete: {} # deletes a song by the given id
+    delete: # deletes a song by the given id
+      description: ""
+      summary: deletes a song by the given id
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: the music was successfully deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "204":
+          description: the music was either already deleted or didn't existed in the first place
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
 
   /music/tags:
     get: {} # gets the list of 
