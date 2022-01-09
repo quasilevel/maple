@@ -26,3 +26,44 @@ paths:
 
   /music/search:
     get: {} # searches through the user's music in a feasibly smart way
+
+components:
+  schemas:
+    Tag:
+      type: object
+      properties:
+        value:
+          type: string
+    
+    MusicMeta:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int64
+        client:
+          type: string
+
+    MusicData:
+      type: object
+      properties:
+        url:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            $ref: "#/components/schemas/Tag"
+
+    Music:
+      type: object
+      properties:
+        id:
+          type: string
+        data:
+          $ref: "#/components/schemas/MusicData"
+        meta:
+          $ref: "#/components/schemas/MusicMeta"
