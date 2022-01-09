@@ -60,7 +60,7 @@ paths:
       summary: adds a song to the storage
       requestBody:
         $ref: "#/components/requestBodies/MusicDataJson"
-        
+
       responses:
         "200":
           description: the request was successful BUT the music data was not added
@@ -109,11 +109,7 @@ paths:
                 $ref: "#/components/schemas/Music"
 
         "404":
-          description: the music was not found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/NotFound"
+          $ref: "#/components/responses/MusicNotFoundJson"
 
     put: {} # updates the songs by the id
     delete: {} # deletes a song by the given id
@@ -194,3 +190,11 @@ components:
                 $ref: "#/components/schemas/MusicData"
               client:
                 type: string
+
+  responses:
+    MusicNotFoundJson:
+      description: the music was not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/NotFound"
