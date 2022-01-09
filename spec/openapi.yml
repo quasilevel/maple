@@ -50,6 +50,11 @@ paths:
                       $ref: "#/components/schemas/Music"
         "404":
           description: there are no items for the given `size` and `start`
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFound"
+                
     post: {} # adds a song to the storage
 
   /music/{id}:
