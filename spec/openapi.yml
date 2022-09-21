@@ -173,7 +173,7 @@ paths:
                 items:
                   $ref: "#/components/schemas/Tag"
 
-  /music/{tag}:
+  /music/tag/{tag}:
     get: # gets all the songs by the given tag
       tags:
         - Tagging
